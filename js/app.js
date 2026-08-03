@@ -39,12 +39,14 @@ async function fetchRandomCat() {
             }
         );
 
-        if(!response.ok){
-            throw new Error("Cat API failed");
+        console.log("status:", response.status);
             
-        }
-
         const data = await response.json();
+        console.log("API DATA:", data);
+
+        if(!response.ok){
+            throw new Error(data.message || "Cat API failed");
+        }
 
         displayCat(data[0]);
 
@@ -53,6 +55,8 @@ async function fetchRandomCat() {
     
     catch(error){
 
+        console.log("ERROR:", error);
+        
         loading.textContent=
         "Unable to load cat.";
     }
