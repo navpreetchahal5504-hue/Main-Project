@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Cat Almanac &mdash; Powered By TheCatAPI</title>
+
+    <!-- GOOGLE FONTS: FRANUNCES + INTER -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Chart.js, used to render the breed 'temperament dossier' radar chart -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js" defer></script>
+
+    <!-- CSS STYLESHEET  LINK -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- JAVASCRIPT LINK -->
+    <script src="js/app.js" defer></script>
+</head>
+<body>
+    <!-- HEADER / HERO -->
+    <header class="hero">
+        <div class="hero__ribbon">Field Guide No. 01</div>
+        <h1 class="hero__title">The Cat Almanac</h1>
+        <p class="hero__subtitle">
+            A field guide to the world's cat breeds, illustrated with live data 
+            from <strong>TheCatAPI</strong>.
+        </p>
+    <!-- STUDENT INFO IS INJECTED DYNAMICALLY BY JAVASCRIPT -->
+    <p id="student-info" class="hero__student-info"></p>
+    </header>
+
+    <!-- MAIN -->
+    <main>
+
+        <!-- SPECIMEN OF THE DAY (random cat) -->
+        <section class="panel panel--specimen" aria-labelledby="specimen-heading">
+            <div class="panel__heading-row">
+                <h2 id="specimen-heading">Specimen of the Moment</h2>
+                <button id="new-specimen-btn" class="btn">Fetch a new specimen</button>
+            </div>
+
+            <div id="loading-text">Summoning a cat from the archiev&hellip;</div>
+        </section>
+
+        <!-- BREED CATALOG SELECTOR -->
+        <section class="panel" aria-labelledby="catalog-heading">
+            <div class="panel__heading-row">
+                <h2 id="catalog-heading">Browse the Catalog</h2>
+                <label class="select-wrap" for="breed-select">
+                    <span class="select-wrap__eyebrow">Choose a breed</span>
+                    <select id="breed-select">
+                        <option value="">Loading breed list&hellip;</option>
+                    </select>
+                </label>
+            </div>
+
+            <!-- GALLERY OF SPECIMEN PHOTO CARDS -->
+        <div id="gallery" class="gallery" aria-live="polite">
+            <p class="loading-text">Select a breed above to see  photographs.</p>
+        </div>
+        </section>
+
+        <!-- BREED DOSSEIR (info + radar chart) -->
+        <section id="dossier" class="panel panel--dossier" hidden aria-labelledby="dossier-heading">
+            <h2 id="dossier-heading">Breed Dossier</h2>
+
+            <div class="dossier__grid">
+                <!-- Text facts cards -->
+                <div class="dossier__facts">
+                    <h3 id="dossier-name">&nbsp;</h3>
+                    <p id="dossier-origin" class="dossier__meta"></p>
+                    <p id="dossier-description"></p>
+                    
+                    <dl class="dossier__stats">
+                        <div><dt>Life span</dt><dd id="dossier-lifespan"></dd></div>
+                        <div><dt>Weight</dt><dd id="dossier-weight"></dd></div>
+                        <div><dt>Temperament</dt><dd id="dossier-temperament"></dd></div>
+                    </dl>
+
+                    <a id="dossier-wiki" href="#" target="_blank" rel="noopener" class="btn btn--ghost">
+                        Read more on Wikipedia &rArr;
+                    </a>
+                </div>
+
+                <!-- RADAR CHART CARD, DRAWN WITH CHART.JS -->
+                <div class="dossier__chart-wrap">
+                    <canvas id="trait-chart" width="360" aria-label="Radar chart of breed temperament traits" role="img"></canvas>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>
+            Built by following the official 
+            <a href="https://developers.thecatapi.com" target="_blank" rel="noopener">
+                TheCatAPI documentation and 'getting started' guide
+            </a>
+            &mdash; all data and images courtesy of
+            <a href="https://thecatapi.com/" target="_blank" rel="noopener">TheCatAPI</a>
+        </p>
+    </footer>
+</body>
+</html>
