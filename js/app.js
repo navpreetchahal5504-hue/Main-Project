@@ -39,6 +39,11 @@ async function fetchRandomCat() {
             }
         );
 
+        if(!response.ok){
+            throw new Error("Cat API failed");
+            
+        }
+
         const data = await response.json();
 
         displayCat(data[0]);
