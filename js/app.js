@@ -13,7 +13,7 @@ document.getElementById("student-info").textContent =
 /* =========================
   API Configuration
 ============================ */
-const API_KEY = "live_ZII9jycizzxmxTELqGxXL6HikfzlnTwzKq9Z6RTbku3dnQtbDshqwxzoCzNX2TAo";
+const API_KEY = "live_0SRP4ouqq31ztvv8COdHG3ZN29LccwnDkgoQMqjkoerU7f2MmjMZXY0R37if6epG";
 
 const API_URL = "https://api.thecatapi.com/v1";
 
